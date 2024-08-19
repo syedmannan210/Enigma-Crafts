@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+{% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="custom handmade gift boxes, personalized gift packaging, bespoke gift boxes, luxury gift boxes, unique gift packaging, custom gift wrapping"/>
+  <meta name="description" content="Discover beautifully crafted custom handmade gift boxes perfect for any occasion. Personalize your gift packaging with our bespoke designs and luxury finishes. Ideal for weddings, birthdays, anniversaries, and corporate gifts." />
+  <meta name="author" content="Enigma Crafts" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Enigma Crafts - Handmade Gifts</title>
+<!--
+
+TemplateMo 558 Klassy Cafe
+
+https://templatemo.com/tm-558-klassy-cafe
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/templatemo-klassy-cafe.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+
+    </head>
+
+    <body>
+
+    <!-- ***** Preloader Start ***** -->
+<!--    <div id="preloader">-->
+<!--        <div class="jumper">-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--            <div></div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'home' %}" class="logo">
+                            <img src="{% static 'images/Enigma Crafts.jpg' %}" align="klassy cafe html template">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="{% url 'home' %}" class="active">Home</a></li>
+<!--                           <li class="scroll-to-section {% if request.path == '/aboutus/' %}active{% endif %}">-->
+                           <li class="scroll-to-section active"><a href="{% url 'aboutus' %}">About</a></li>
+
+</li>
+
+
+                        <!--
+                            <li class="submenu">
+                                <a href="javascript:;">Drop Down</a>
+                                <ul>
+                                    <li><a href="#">Drop Down Page 1</a></li>
+                                    <li><a href="#">Drop Down Page 2</a></li>
+                                    <li><a href="#">Drop Down Page 3</a></li>
+                                </ul>
+                            </li>
+                        -->
+                            <li class="scroll-to-section"><a href="{% url 'shop' %}">Shop</a></li>
+                            <li class="scroll-to-section"><a href="{% url 'ourservices' %}">Services</a></li>
+                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                            <li class="scroll-to-section"><a href="{% url 'contact' %}">Contact Us</a></li>
+                            {% if user.is_authenticated %}
+
+                            <li class="scroll-to-section" ><a href="{% url 'userlogout' %}">Logout</a></li>
+                            {% else %}
+                            <li class="scroll-to-section" ><a href="{% url 'auth' %}">Login/Signup</a></li>
+                            {% endif %}
+                           <li class="scroll-tp-section"></li><a href="{% url 'cart_detail' %}"><button type="button" id = "popcart" class="btn btn-danger mx-2" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Cart items">
+        Cart (<span id="cart">{{request.session.cart | length}}</span>)</button></a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->

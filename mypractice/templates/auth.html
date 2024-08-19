@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Pills navs -->
+<head>
+  {% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin-top: 10px;
+      background: darkred;
+    }
+
+    form {
+      width: 80%;
+      margin: 60px auto;
+      background: indianred;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      position: relative;
+      margin: 40px 0px;
+    }
+
+    .label-txt {
+      position: absolute;
+      top: -1.6em;
+      padding: 10px;
+      font-family: sans-serif;
+      font-size: .8em;
+      letter-spacing: 1px;
+      color: white;
+      transition: ease .3s;
+    }
+
+    .input {
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .line-box {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background: #BCBCBC;
+    }
+
+    .line {
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: darkred;
+      transition: ease .6s;
+    }
+
+    .input:focus + .line-box .line {
+      width: 100%;
+    }
+
+    .input::placeholder {
+      color: white;
+    }
+
+    .label-active {
+      top: -3em;
+    }
+
+    button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: darkred;
+      font-weight: bold;
+      color: rgb(120, 120, 120);
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: ease .3s;
+    }
+
+    button:hover {
+      background: #8BC34A;
+      color: #ffffff;
+    }
+
+    @media (min-width: 768px) {
+      form {
+        width: 60%;
+        padding: 60px 120px 80px 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<form id="auth" method="post">
+  {% csrf_token %}
+  <h2 class="my-4">Register Now</h2>
+  <input type="text" class="input" name="username" required="true" placeholder="Username">
+  <div class="line-box">
+    <div class="line"></div>
+  </div>
+  <input type="text" class="input" name="first_name" placeholder="First Name" required="true">
+  <div class="line-box">
+    <div class="line"></div>
+  </div>
+  <input type="text" class="input" name="last_name" required="true" placeholder="Last Name">
+  <div class="line-box">
+    <div class="line"></div>
+  </div>
+  <input type="email" class="input" name="email" required="true" placeholder="Email">
+  <div class="line-box">
+    <div class="line"></div>
+  </div>
+  <input type="password" class="input" name="pass1" required="true" placeholder="Password">
+  <div class="line-box">
+    <div class="line"></div>
+  </div>
+  <input type="password" class="input" name="pass2" required="true" placeholder="Confirm Password">
+  <div class="line-box">
+    <div class="line"></div>
+  </div>
+  <button type="submit" class="my-4">Sign Up</button>
+  <p class="mb-0 fw-bold ">{{alert | safe}}</p>
+  <p class="mb-0 fw-bold my-4">Already have an account? <a href="{% url 'userlogin' %}" class="text-white fw-bold">Login Now</a></p>
+</form>
+
+<script>
+  $(document).ready(function(){
+    $('.input').focus(function(){
+      $(this).parent().find(".label-txt").addClass('label-active');
+    });
+
+    $(".input").focusout(function(){
+      if ($(this).val() == '') {
+        $(this).parent().find(".label-txt").removeClass('label-active');
+      };
+    });
+  });
+</script>
+<script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/scrollreveal.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imgfix.min.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script>
+    $(function() {
+        var selectedClass = "";
+        $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+                $("."+selectedClass).fadeIn();
+                $("#portfolio").fadeTo(50, 1);
+            }, 500);
+        });
+    });
+</script>
+
+</body>
+{% endblock %}
+{% include "footer.html" %}

@@ -1,0 +1,52 @@
+
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% load static %}
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+ <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xs-12">
+                    <div class="right-text-content">
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="logo">
+                        <a href="base.html"><img src="{% static 'images/Enigma Crafts' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                    <div class="left-text-content">
+                        <p>© Copyright Enigma Crafts Co.
+
+                        <br>Design: Phoenix</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

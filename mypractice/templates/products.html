@@ -1,0 +1,103 @@
+{% include "header.html" %}
+
+{% block content %}
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <style>
+        .fa-play:before {
+            content: "\f04b";
+}
+        .pagination{
+        margin-top:20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+
+
+<body>
+{% load static %}
+<section class="section" id="chefs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4 text-center">
+                    <div class="section-heading">
+                        <h6>{{product.product_name}}</h6>
+                        <h2>We offer the best Products for you</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                            <img src="/media/{{product.image}}" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{product.name}}</h4><br>
+                            <h4>Price: {{product.price}} Rs.</h4>
+                            <span>{{product.des | safe}}</span>
+                        </div>
+                <a href="{% url 'cart_add' product.id %}"><button id="{{ product.product_slug }}" class="btn btn-danger">Buy Now</button></a>
+<!--               Trying to implement cart logic but above line is correct. Commented below line cuz id is used-->
+<!--                <a href="/products/{{product.id}}"><button id="qv{{pr.id}}" class="btn btn-danger">Buy Now</button></a>-->
+                    </div>
+
+                </div>
+
+            </div>
+
+</section>
+
+<script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- Plugins -->
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/scrollreveal.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imgfix.min.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+
+<!-- Global Init -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+    </script>
+
+</body>
+
+{% endblock %}
+
+
+{% include "footer.html" %}

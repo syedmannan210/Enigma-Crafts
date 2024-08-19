@@ -1,0 +1,123 @@
+{% include "header.html" %}
+
+{% block content %}
+<head>
+    <style>
+        .fa-play:before {
+            content: "\f04b";
+}
+        .pagination{
+        margin-top:20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+
+
+<body>
+{% load static %}}
+ <section class="section" id="chefs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4 text-center">
+                    <div class="section-heading">
+                        <h6>Our Creations</h6>
+                        <h2>We offer the best services for you</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for s in serviceData %}
+                <div class="col-lg-4">
+                    <div class="chef-item">
+                        <div class="thumb">
+                            <div class="overlay"></div>
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                            <img src="/media/{{s.service_image}}" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{s.service_title}}</h4>
+                            <span>{{s.service_des}}</span>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="...">
+  <ul class="pagination">
+      {% if serviceData.has_previous %}
+      <li class="page-item">
+      <a class="page-link" href="/ourservices/?page=1" tabindex="-1">First</a>
+    </li>
+      <li class="page-item">
+      <a class="page-link" href="/ourservices/?page={{serviceData.previous_page_number}}" tabindex="-1">Previous</a>
+    </li>
+      {% endif %}
+
+
+      {% for n in numpage_list %}
+    <li class="page-item"><a class="page-link" href="/ourservices/?page={{n}}">{{n}}</a></li>
+      {% endfor %}
+
+      {% if serviceData.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="/ourservices/?page={{serviceData.next_page_number}}">Next</a>
+    </li>
+      {% endif %}
+       <li class="page-item">
+      <a class="page-link" href="/ourservices/?page={{last_page}}">Last</a>
+    </li>
+  </ul>
+</nav>
+    </section>
+
+<script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- Plugins -->
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/scrollreveal.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imgfix.min.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+
+<!-- Global Init -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+    </script>
+
+
+</body>
+{% endblock %}
+
+
+{% include "footer.html" %}

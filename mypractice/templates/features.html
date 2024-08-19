@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Website</title>
+    <style>
+        body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #1abc9c;
+    color: white;
+    font-size: 24px;
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.service {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.service img {
+    width: 50px;
+    height: 50px;
+}
+
+button {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+        div.myblue-div{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background-color:lightblue;
+        }
+
+
+    </style>
+</head>
+{% load static %}
+<body>
+<!--    <h1>Our Services {{output}}</h1>-->
+    <h1>Our Services</h1>
+    <form method="get">
+    <div class="myblue-div">
+    <input type="text" name="serviceData" class="form-input"/>
+    <button type="submit">Search</button>
+    </div>
+    {% for s in serviceData %}
+        <div class="services">
+        <div class="service">
+            <img src="{% static 'images/itachi.jpg' %}" alt="My image" />
+            <h2>{{s.service_title}}</h2>
+            <p>{{s.service_des}}</p>
+            <button>{{s.service_icon}}</button>
+            <a href="/ourservices/{{s.id}}"> Show More </a>
+        </div>
+        {% empty %}
+        No Data Found
+        {% endfor %}
+<!--      <div class="service">-->
+<!--            <img src="{% static 'images/aud.jpg' %}" alt="My image2" />-->
+<!--            <h2>Speakers</h2>-->
+<!--            <p>Explore our services  more.</p>-->
+<!--            <button>MORE</button>-->
+<!--        </div>-->
+<!--      <div class="service">-->
+<!--            <img src="{% static 'images/mass.jpg' %}" alt="My image3" />-->
+<!--            <h2>Mass Gainer</h2>-->
+<!--            <p>Explore our services  more.</p>-->
+<!--            <button>MORE</button>-->
+<!--        </div>-->
+<!--      <div class="service">-->
+<!--            <img src="{% static 'images/itachi.jpg' %}" alt="My image" />-->
+<!--            <h2>Animation</h2>-->
+<!--            <p>Explore our services  more.</p>-->
+<!--            <button>MORE</button>-->
+<!--        </div>-->
+        <!-- Repeat similar blocks for other services -->
+    </div>
+
+
+        <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- Plugins -->
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/scrollreveal.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imgfix.min.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+
+<!-- Global Init -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+    </script>
+
+
+
+</body>
+</html>
+
+{%endblock%}
